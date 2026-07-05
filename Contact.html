@@ -1,1 +1,676 @@
-c
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا - منصة إدارة العقارات</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+        }
+
+        /* Header Section */
+        .header-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .header-section h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header-section p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        /* Contact Info Cards */
+        .contact-info-section {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .contact-info-section h2 {
+            font-size: 2.2em;
+            color: white;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            border-left: 5px solid transparent;
+            transform: translateY(0);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            border-left-color: #667eea;
+        }
+
+        .info-card i {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .info-card h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #7f8c8d;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        /* Contact Form */
+        .form-section {
+            background: white;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .form-section h2 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            animation: fadeIn 0.6s ease-out backwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(5) { animation-delay: 0.5s; }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Social Links */
+        .social-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            animation: slideInLeft 0.8s ease-out 0.3s both;
+        }
+
+        .social-section h3 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.5em;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-8px) rotate(10deg);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Messages */
+        .success-message, .error-message {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: none;
+            animation: slideInDown 0.5s ease-out;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            border-left: 5px solid #2e7d32;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+            color: white;
+            border-left: 5px solid #b71c1c;
+        }
+
+        /* Map Section */
+        .map-section {
+            grid-column: 1 / -1;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: slideInUp 0.8s ease-out 0.4s both;
+        }
+
+        .map-section h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .header-section h1 {
+                font-size: 2.5em;
+            }
+
+            .form-section {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                padding: 60px 20px;
+            }
+
+            .header-section h1 {
+                font-size: 2em;
+            }
+
+            .header-section p {
+                font-size: 1.1em;
+            }
+
+            .main-container {
+                margin: -30px auto 30px;
+            }
+
+            .form-section {
+                padding: 25px;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-section {
+                padding: 40px 15px;
+            }
+
+            .header-section h1 {
+                font-size: 1.5em;
+            }
+
+            .form-section {
+                padding: 20px;
+            }
+
+            .main-container {
+                padding: 0 15px;
+            }
+
+            .content-wrapper {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">🏠 الرئيسية</a>
+        <a href="#properties">🏢 العقارات</a>
+        <a href="#about">ℹ️ عن الشركة</a>
+        <a href="#contact">📞 تواصل معنا</a>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="header-section" id="contact">
+        <h1>🤝 تواصل معنا</h1>
+        <p>نحن هنا لخدمتك وتحقيق أحلامك العقارية</p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Contact Info -->
+            <div class="contact-info-section">
+                <h2>معلومات التواصل</h2>
+
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>📍 العنوان</h3>
+                    <p>الرياض - حي العليا</p>
+                    <p>شارع الملك فهد، البرج الذهبي، الدور 15</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>📞 الهاتف</h3>
+                    <p>+966 11 123 4567</p>
+                    <p>+966 11 123 4568</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>📧 البريد الإلكتروني</h3>
+                    <p>info@realestate.com</p>
+                    <p>support@realestate.com</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>🕐 ساعات العمل</h3>
+                    <p>الأحد - الخميس: 9:00 ص - 6:00 م</p>
+                    <p>الجمعة والسبت: 10:00 ص - 4:00 م</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="form-section">
+                <h2>أرسل لنا رسالة</h2>
+
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> شكراً! تم استقبال رسالتك بنجاح. سنرد عليك قريباً.
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> حدث خطأ ما. يرجى التأكد من ملء جميع الحقول.
+                </div>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="fas fa-user"></i> الاسم الكامل
+                        </label>
+                        <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> البريد الإلكتروني
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">
+                            <i class="fas fa-phone"></i> رقم الهاتف
+                        </label>
+                        <input type="tel" id="phone" name="phone" placeholder="966xxxxxxxxx">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">
+                            <i class="fas fa-list"></i> الموضوع
+                        </label>
+                        <select id="subject" name="subject" required>
+                            <option value="">اختر الموضوع</option>
+                            <option value="استفسار">استفسار عام</option>
+                            <option value="شكوى">شكوى أو ملاحظة</option>
+                            <option value="عرض">عرض عقار</option>
+                            <option value="دعم">طلب دعم فني</option>
+                            <option value="شراكة">فرص شراكة</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">
+                            <i class="fas fa-comment"></i> الرسالة
+                        </label>
+                        <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+                    </div>
+
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-section">
+            <h3>تابعنا على وسائل التواصل</h3>
+            <div class="social-links">
+                <a href="#" title="Facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" title="Twitter" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" title="Instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" title="LinkedIn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" title="WhatsApp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2>📍 موقعنا</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.7823184757754!2d46.6753!3d24.7741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03e9999999f1%3A0x5555555555555555!2sAl-Olaya%2C%20Riyadh!5e0!3m2!1sar!2ssa!4v1234567890" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:none;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value.trim()
+            };
+
+            // Validation
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                showError('يرجى ملء جميع الحقول المطلوبة');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                showError('البريد الإلكتروني غير صحيح');
+                return;
+            }
+
+            // Success
+            console.log('Form Data:', formData);
+            showSuccess();
+            this.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+
+        function showSuccess() {
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorMessage').innerHTML = 
+                '<i class="fas fa-exclamation-circle"></i> ' + message;
+            document.getElementById('errorMessage').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
